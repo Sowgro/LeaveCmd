@@ -1,0 +1,17 @@
+main: me.sowgro.LeaveCmd.Main
+name: LeaveCmd
+author: sowgro
+version: 1.0
+api-version: 1.19
+commands:
+  leave:
+    description: test
+    permission: leaveCmd.leave
+  leaveCmd:
+    description: test2
+    permission: leaveCmd.admin
+permissions:
+  leaveCmd.leave:
+    default: true
+  leaveCmd.admin:
+    default: op
