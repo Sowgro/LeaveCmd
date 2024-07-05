@@ -2,16 +2,17 @@ main: me.sowgro.LeaveCmd.Main
 name: LeaveCmd
 author: sowgro
 version: 1.0
-api-version: 1.19
+api-version: 1.16
+
 commands:
   leave:
-    description: test
+    description: Leave the current game
     permission: leaveCmd.leave
   leaveCmd:
-    description: test2
     permission: leaveCmd.admin
+
 permissions:
   leaveCmd.leave:
     default: true
-  leaveCmd.admin:
+  leaveCmd.reload:
     default: op

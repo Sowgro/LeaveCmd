@@ -1,7 +1,5 @@
+# World prefix : Leave command
 commands:
-  //ex: "command"
-  //hg: "hungergames leave"
-
-worlds:
-  //world: ex
-  //arena: hg
+  "ex-": "command"
+  #HG-Atlantis -> /hungergames leave
+  "HG-": "hungergames leave"

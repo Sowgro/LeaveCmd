@@ -1,57 +1,24 @@
 package me.sowgro.LeaveCmd;
 
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin 
-{
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+public class Main extends JavaPlugin {
+	public static Main plugin;
+
 	@Override
-	public void onEnable() 
-	{
-		this.saveDefaultConfig();
-		//startup, reloads, plugin reloads
+	public void onEnable() {
+		plugin = this;
+		Objects.requireNonNull(getCommand("leavecmd")).setExecutor(new LeaveCmd());
+		Objects.requireNonNull(getCommand("leave")).setExecutor(new Leave());
 	}
-	
-	@Override
-	public void onDisable()
-	{
-		//shutdown, reloads
-	}
-	
-	// /leave
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
-	{
-		if (label.equalsIgnoreCase("leave"))
-		{
-			if (sender instanceof Player)
-			{
-				try
-				{
-					String world = ((Player) sender).getWorld().getName(); //gets world of player
-					String game = this.getConfig().getConfigurationSection("worlds").getString(world); //gets the game of that world
-					String command = this.getConfig().getConfigurationSection("commands").getString(game); //gets the command of that game
-					((Player) sender).performCommand(command); //executes the command
-				}
-				catch(Exception e)
-				{
-					sender.sendMessage("The current game cannot be left.");
-				}
-			}
-			else
-			{
-				getLogger().info("This command cannot be used by the console");
-			}
-		}
-		if (label.equalsIgnoreCase("leaveCmd"))
-		{
-			if (args[0].equalsIgnoreCase("reload"))
-			{
-				this.reloadConfig();
-				sender.sendMessage("Reloaded.");
-			}
-		}
-		return false;
-	} 
-} 
+}
